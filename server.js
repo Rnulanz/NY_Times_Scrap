@@ -9,7 +9,7 @@ mongoose.Promise = Promise;
 
 // Initialize Express
 var app = express();
-var PORT = process.env.PORT || 8000;
+var PORT = process.env.PORT || 8080;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -43,5 +43,5 @@ require("./controllers/controller.js")(app);
 
 //Listen on PORT 8000 & notify us.
 app.listen(PORT, function () {
-    console.log("App running on port 8 THOUSAND!!!!!!!!");
+    console.log("App running on port 8080");
 });

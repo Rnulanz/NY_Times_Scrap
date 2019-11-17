@@ -2,8 +2,8 @@
 var request = require("request");
 var cheerio = require("cheerio");
 // Requiring our Comment and Article models
-var Comment = require("../models/comment.js");
-var Article = require("../models/article.js");
+var Comment = require("../models/Comment");
+var Article = require("../models/Article");
 
 
 module.exports = function (app) {
@@ -28,11 +28,11 @@ module.exports = function (app) {
             .children("h2")
             .children("a")
             .attr("href");
-            var sum = $(this)
+            var artSin = $(this)
             .children("div.text")
             .text();
 
-        if (head && url && sum) {
+        if (head && url && artSin) {
             // Save an empty result object
             var result = {};
 
@@ -40,7 +40,7 @@ module.exports = function (app) {
             // result object
             result.head = head;
             result.url = url;
-            result.sum = sum;
+            result.artSin = artSin;
 
             // Using our Article model, create a new entry
             Article.create(result, function (err, doc) {
@@ -58,5 +58,22 @@ module.exports = function (app) {
       // Tell the browser that we finished scraping the text
         res.redirect("/");
     });
+
+      // This will get the articles we scraped from the mongoDB
+  app.get("/articles", function (req, res) {
+    // Grab every doc in the Articles array
+    Article
+      .find({}, function (error, doc) {
+        // Log any errors
+        if (error) {
+          console.log(error// Or send the doc to the browser as a json object
+          );
+        } else {
+          res.render("index", {result: doc});
+        }
+        //Will sort the articles by most recent (-1 = descending order)
+      })
+      .sort({'_id': -1});
+  });
 
 }
