@@ -1,13 +1,13 @@
-    <div class="jumbotron">
-        <h1 class="jumboheader">Scrap It</h1>
-        <p class="lead">Scrape the NY Times website for the most recent exiting articles.</p>
-        <p><a class="btn btn-lg btn-success" href="/scrape" role="button">Get the latest NY Times Articles!</a></p>
-    </div>
+<div class="jumbotron">
+    <h1 class="jumboheader">Scrap It</h1>
+    <p class="lead">Scrape the NY Times website for the most recent exiting articles.</p>
+    <p><a class="btn btn-lg btn-success" href="/scrape" role="button">Get the latest NY Times Articles!</a></p>
+</div>
 
  {{#each result}}
     <div class="card news-section">
         <a href="{{this.url}}">
-            <h4 class="card-header">{{this.head}}</h4>
+            <h2 class="card-header">{{this.head}}</h2>
         </a>
         <div class="card-block">
             <a href="{{this.url}}">
