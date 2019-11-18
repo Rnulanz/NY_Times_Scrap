@@ -5,7 +5,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 
 // // Using es6 js promise
-// mongoose.Promise = Promise;
+mongoose.Promise = Promise;
 
 // Initialize Express
 var app = express();

@@ -7,11 +7,11 @@
  {{#each result}}
     <div class="card news-section">
         <a href="{{this.url}}">
-            <h2 class="card-header">{{this.head}}</h2>
+            <h4 class="card-header">{{this.head}}</h4>
         </a>
         <div class="card-block">
             <a href="{{this.url}}">
-                <p class="card-text">{{this.artSin}}</p>
+                <p class="card-text">{{this.sum}}</p>
             </a>
             <br>
             <a href="/articles/{{this._id}}" class="btn btn-primary">Comment</a>

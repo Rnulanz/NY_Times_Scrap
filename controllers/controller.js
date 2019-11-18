@@ -2,8 +2,8 @@
 var request = require("request");
 var cheerio = require("cheerio");
 // Requiring our Comment and Article models
-var Comment = require("../models/Comment");
-var Article = require("../models/Article");
+var Comment = require("../models/Comment.js");
+var Article = require("../models/Article.js");
 
 
 module.exports = function (app) {
@@ -12,11 +12,11 @@ module.exports = function (app) {
         res.redirect('/articles');
     });
 
-    app.get("/scrape", function (req, res) {
-      //use request dependecy to grab the body of the html
-    request("http://www.nytimes.com", function (error, response, html) {
-        //Save the body of the html into a variabl called $  within cheerio
+    app.get("/scrape", function(req, res) {
+      request("http://www.nytimes.com", function(error, response, html) {
+  
         var $ = cheerio.load(html);
+        console.log("scrapping")
         // Now grab every a tag url within an article heading  and iterate through it
         // and perform the following
         $(".post-excerpt").each(function (i, element) {
@@ -28,11 +28,11 @@ module.exports = function (app) {
             .children("h2")
             .children("a")
             .attr("href");
-            var artSin = $(this)
+            var sum = $(this)
             .children("div.text")
             .text();
 
-        if (head && url && artSin) {
+        if (head && url && sum) {
             // Save an empty result object
             var result = {};
 
@@ -40,7 +40,7 @@ module.exports = function (app) {
             // result object
             result.head = head;
             result.url = url;
-            result.artSin = artSin;
+            result.sum = sum
 
             // Using our Article model, create a new entry
             Article.create(result, function (error, data) {
@@ -53,6 +53,7 @@ module.exports = function (app) {
             });
             }
         });
+        
         });
       // Tell the browser that we finished scraping the text
         res.redirect("/");
@@ -61,8 +62,7 @@ module.exports = function (app) {
       // This will get the articles we scraped from the mongoDB
   app.get("/articles", function (req, res) {
     // Grab every doc in the Articles array
-    Article
-      .find({}, function (error, data) {
+    Article.find({}, function (error, data) {
         // Log any errors
         if (error) {
           console.log(error);
