@@ -13,24 +13,32 @@ module.exports = function (app) {
     });
 
     app.get("/scrape", function(req, res) {
-      request("https://www.nytimes.com/", function(error, response, html) {
-  
+
+        request("http://www.nytimes.com/", function(error, response, html) {
+        // console.log(response);
+        // console.log(data);
         var $ = cheerio.load(html);
-        console.log("scrapping")
+        // var $ = cheerio.load(response.data);
+
+
+        console.log("scrapping");
         // Now grab every a tag url within an article heading  and iterate through it
         // and perform the following
-        $(".post-excerpt").each(function (i, element) {
+        $(".css-6p6lnl").each(function (i, element) {
             var head = $(this)
             .children("h2")
             .children("a")
             .text();
+
             var url = $(this)
             .children("h2")
             .children("a")
             .attr("href");
+
             var sum = $(this)
             .children("div.text")
             .text();
+
 
         if (head && url && sum) {
             // Save an empty result object
