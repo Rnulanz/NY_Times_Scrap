@@ -4,8 +4,8 @@ var exphbs = require("express-handlebars");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
-// Using es6 js promise
-mongoose.Promise = Promise;
+// // Using es6 js promise
+// mongoose.Promise = Promise;
 
 // Initialize Express
 var app = express();
@@ -25,7 +25,8 @@ app.set('view engine', 'handlebars');
 app.use(express.static("public"));
 
 // Mongoose (orm) connects to our mongo db and allows us to have access to the MongoDB commands for easy CRUD 
-mongoose.connect("mongodb://heroku_f9jqr8qs:efv0pqfn8qdqhqcv7k6fr8fhg@ds161039.mlab.com:61039/heroku_f9jqr8qs");
+// Connect to the Mongo DB
+mongoose.connect("mongodb://localhost/articledb", { useNewUrlParser: true });
 var db = mongoose.connection;
 
 // if any errors than console errors
