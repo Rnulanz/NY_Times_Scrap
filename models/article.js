@@ -15,7 +15,7 @@ var ArticleSchema = new Schema({
         unique: true
     },
 
-    artSin: {
+    sum: {
         type: String,
         required: true,
         unique: true

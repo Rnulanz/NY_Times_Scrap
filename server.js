@@ -4,8 +4,7 @@ var exphbs = require("express-handlebars");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
-// // Using es6 js promise
-mongoose.Promise = Promise;
+
 
 // Initialize Express
 var app = express();
@@ -26,18 +25,11 @@ app.use(express.static("public"));
 
 // Mongoose (orm) connects to our mongo db and allows us to have access to the MongoDB commands for easy CRUD 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/articledb", { useNewUrlParser: true });
-var db = mongoose.connection;
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
-// if any errors than console errors
-db.on("error", function (error) {
-    console.log("Mongoose Error: ", error);
-});
 
-// display a console message when mongoose has a conn to the db
-db.once("open", function () {
-    console.log("Mongoose connection successful.");
-});
 
 // Require the routes in our controllers js file
 require("./controllers/controller.js")(app);
