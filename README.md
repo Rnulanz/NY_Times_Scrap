@@ -22,7 +22,7 @@ Create an app that accomplishes the following:
     2. At the command line navigate to the apps folder and run npm install, this will install the npm dependencies from the package.json file.
     3. Install mongodb on your machine then run an instance of the db, if necessary -> https://www.mongodb.com/
     4. Then run node server.js the console should log the port number the app will be on (currently 8080).
-    5. Go to your browser and type http://localhost:808 into the address bar to bring up the app.
+    5. Go to your browser and type http://localhost:8080 into the address bar to bring up the app.
 
 
 ## Technologies Used
