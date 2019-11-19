@@ -24,31 +24,26 @@ module.exports = function (app) {
         console.log("scrapping");
         // Now grab every a tag url within an article heading  and iterate through it
         // and perform the following
-        $(".css-6p6lnl").each(function (i, element) {
-            var head = $(this)
+        $("article").each(function (i, element) {
+
+            let result = {};
+
+            this.head = $(this)
             .children("h2")
             .children("a")
             .text();
 
-            var url = $(this)
+            this.url = $(this)
             .children("h2")
             .children("a")
             .attr("href");
 
-            var sum = $(this)
+            this.sum = $(this)
             .children("div.text")
             .text();
 
 
-        if (head && url && sum) {
-            // Save an empty result object
-            var result = {};
-
-            // Add the text and href of every url, and save them as properties of the
-            // result object
-            result.head = head;
-            result.url = url;
-            result.sum = sum
+        if (this.head && this.url && this.sum) {
 
             // Using our Article model, create a new entry
             Article.create(result, function (error, data) {

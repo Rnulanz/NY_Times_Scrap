@@ -5,7 +5,7 @@
     <p><a class="btn btn-lg btn-success" href="/scrape" role="button">Get the latest NY Times Articles!</a></p>
 </div>
 
- {{#each result}}
+ {{#each articles}}
     <div class="card news-section">
         <a href="{{this.url}}">
             <h4 class="card-header">{{this.head}}</h4>
