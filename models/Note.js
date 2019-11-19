@@ -6,13 +6,13 @@ var Schema = mongoose.Schema;
 // creating a new schema called noteSchema
 var noteSchema = new Schema({
   // associated article that we want to attatch the note to
-  _headlineId: {
+    _headlineId: {
     type: Schema.Types.ObjectId,
     ref: "Headline"
-  },
-  date: String,
+},
+    date: String,
   // User's note text that they type in as string
-  noteText: String
+    noteText: String
 });
 
 // Create note model

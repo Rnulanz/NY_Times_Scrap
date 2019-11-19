@@ -1,2 +1,8 @@
 # NY_Times_Scrap
-Scrappy scrappy
+Scrappy Scrappy Doo
+
+![Image description](/public/assets/img/maxresdefault.jpg)
+
+Demo:
+
+https://blooming-bayou-12238.herokuapp.com/

@@ -12,6 +12,6 @@ var makeDate = function() {
     formattedDate += d.getFullYear();
     
     return formattedDate;
-  }
-  
-  module.exports = makeDate;
+}
+
+module.exports = makeDate;

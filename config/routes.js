@@ -17,7 +17,9 @@ router.get("/saved", function(req, res) {
 });
 
   // routes that will be using the controllers
-
+  // whenever we get the route /api/fetch, run this function
+  // the request that we are passing in here is the request to scrape and fetch the data and insert into our collection
+  // if it is a new unique headline (fetch function in headlines.js)
 router.get("/api/fetch", function(req, res) { 
     // go to headlinesController and run fetch and then popup the message to the user
     headlinesController.fetch(function(err, docs) {
