@@ -1,25 +1,41 @@
-<div class="container">
-<div class="jumbotron">
-    <h1 class="jumboheader">Scrap It</h1>
-    <p class="lead">Scrape the NY Times website for the most recent exiting articles.</p>
-    <p><a class="btn btn-lg btn-success" href="/scrape" role="button">Get the latest NY Times Articles!</a></p>
-</div>
-
- {{#each articles}}
-    <div class="card news-section">
-        <a href="{{this.url}}">
-            <h4 class="card-header">{{this.head}}</h4>
-        </a>
-        <div class="card-block">
-            <a href="{{this.url}}">
-                <p class="card-text">{{this.sum}}</p>
-            </a>
-            <br>
-            <a href="/articles/{{this._id}}" class="btn btn-primary">Comment</a>
-        </div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Article Scraper</a>
     </div>
-    <br>
-    <br>
- {{/each}}
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/saved">Saved Articles</a></li>
+      <li><a class="btn btn-danger scrape-new">SCRAPE NEW ARTICLES!</a></li>
+    </ul>
+  </div>
+</nav>
 
+<div class="jumbotron text-center">
+  <div class="overlay">
+  </div>
+  <div class="background-image">
+  </div>
+  <div class="caption">
+    <h1>Article Scraper</h1>
+    <p>New York Times Edition</p>
+  </div>
 </div>
+
+<div class="container-fluid article-container">
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>New York Times Article Scraper</p>
+  </div>
+</footer>
+
+{{!-- bootstrap js --}}
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{{!-- bootbox --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.3.2/bootbox.min.js"></script>
+{{!-- index.js --}}
+<script src="../assets/javascript/index.js"></script>
